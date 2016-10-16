@@ -13,8 +13,10 @@ ENV SQUID_LOG_DIR /var/log/squid
 ENV SQUID_CONFIG_DIR /etc/squid
 
 # install apt utils
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils && \
-    curl http://packages.diladele.com/diladele_pub.asc -o diladele_pub.asc && apt-key add diladele_pub.asc && rm diladele_pub.asc && \
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils curl && \
+    curl http://packages.diladele.com/diladele_pub.asc -o diladele_pub.asc && \
+    apt-key add diladele_pub.asc && \
+    rm diladele_pub.asc && \
     echo "deb http://ubuntu16.diladele.com/ubuntu/ xenial main" > /etc/apt/sources.list.d/ubuntu16.diladele.com.list && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
