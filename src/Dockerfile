@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends apt-utils curl 
     apt-key add diladele_pub.asc && \
     rm diladele_pub.asc && \
     echo "deb http://ubuntu16.diladele.com/ubuntu/ xenial main" > /etc/apt/sources.list.d/ubuntu16.diladele.com.list && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
 
 # install squid
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
             squid \
             squidclient && \
     rm -rf /var/run/squid.pid && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
 
 COPY contents/firstrun.sh /usr/local/bin/firstrun.sh
 COPY contents/entrypoint.sh /sbin/entrypoint.sh
